@@ -42,14 +42,59 @@
                     int num = random.Next(0, 51);
                     matrice[i, j] = num;
 
-                    if (matrice[i,j] > x || matrice[i,j] < y)
+                    if (matrice[i,j] >= x && matrice[i,j] <= y)
                     {
                         a++;
                     }
+
+                    Console.Write(matrice[i,j] +  "\t");
                 }
+                Console.WriteLine();
             }
 
             return a;
+        }
+        static void es3(int[,] matrice)
+        {
+            float[] medieVettori = new float[matrice.GetLength(0)];
+            int somma = 0, a = 0;
+            float media = 0;
+
+            for(int i = 0; i < matrice.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrice.GetLength(1); j++)
+                {
+                    somma = somma + matrice[i, j];
+                    a++;
+                }
+                media = somma / a;
+                medieVettori[i] = media;
+
+                a = 0;
+                media = 0;
+                somma = 0;
+
+                Console.WriteLine(medieVettori[i]);
+            }
+
+            
+        }
+        static void es4(int[,] matrice)
+        {
+            int[] sommaColonne = new int[matrice.GetLength(1)];
+            int somma = 0;
+
+            for (int i = 0; i < matrice.GetLength(1); i++)
+            {
+                for (int j = 0; j < matrice.GetLength(0); j++)
+                {
+                    somma = somma + matrice[j, i];
+                }
+                sommaColonne[i] = somma;
+                somma = 0;
+
+                Console.Write(sommaColonne[i] + " ");
+            }
         }
         static void Main(string[] args)
         {
@@ -65,6 +110,12 @@
 
             int[,] M2 = new int[5, 5];
             Console.WriteLine("Ci sono " + es2(M2, x, y) + " numeri della matrice tra l'intervallo di x e y");
+
+            Console.WriteLine();
+            es3(M2);
+
+            Console.WriteLine();
+            es4(M2);
         }
     }
 }
