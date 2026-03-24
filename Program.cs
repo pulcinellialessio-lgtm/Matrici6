@@ -116,6 +116,7 @@
 
             Console.WriteLine();
             es4(M2);
+            ok
         }
     }
 }
